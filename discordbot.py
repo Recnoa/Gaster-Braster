@@ -16,6 +16,12 @@ async def on_command_error(ctx, error):
 async def ping(ctx):
     await ctx.send('pong')
 
+    @client.event
+async def on_message(message):こんにちは
+    #bot自身が送信したメッセージには反応しない
+    if message.author == client.user:
+        return
+    await message.channel.send("こんにちは")
 
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
