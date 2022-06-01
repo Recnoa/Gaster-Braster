@@ -16,16 +16,5 @@ async def on_command_error(ctx, error):
 async def ping(ctx):
     await ctx.send('pong')
 
-    @client.event
-async def on_voice_state_update(member, before, after):
-    text_channel = client.get_channel(ID_TEST_CHANNEL)
-    #ミュート状態に変化がなければ無視する
-    if before.self_mute == after.self_mute:
-        return
-    if before.self_mute:
-        await text_channel.send("{}がマイクミュートを解除しました。".format(member.name))
-    else:
-        await text_channel.send("{}がマイクをミュートしました。".format(member.name))
-    
 token = getenv('DISCORD_BOT_TOKEN')
 bot.run(token)
