@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 from os import getenv
 import traceback
