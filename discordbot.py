@@ -1,20 +1,20 @@
 from discord.ext import commands
 from os import getenv
 import traceback
+import discord
+token="OTc5ODA4NTE1MDQyNDcyMDQ2.GdDPkk.dLCJjZkEKIc5FkpoP0-ZVzYQtI_tc3psBH-AiQ"
 
 bot = commands.Bot(command_prefix='/')
 
 
 @bot.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
+async def on_ready():
+  print("起動完了")
 
 
 @bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+async def a(ctx,target):
+    await ctx.send(target)
 
-token = getenv('DISCORD_BOT_TOKEN')
+
 bot.run(token)
